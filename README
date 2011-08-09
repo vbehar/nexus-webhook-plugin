@@ -1,0 +1,39 @@
+
+Nexus WebHook Plugin
+https://github.com/vbehar/nexus-webhook-plugin
+
+This is a Nexus plugin that provides WebHook notifications when new (Maven) artifacts are stored in a Nexus instance.
+Basically it POST an HTTP request to one or more urls, with the details of the event as a JSON document in the request body.
+See http://www.webhooks.org/ for more information about WebHooks.
+
+Usage
+- Register your WebHook urls in the configuration file. See https://github.com/vbehar/nexus-webhook-plugin/blob/master/webhooks.properties for a sample with instructions.
+- If you want to reload your configuration, do an HTTP (GET or POST) request to "http://NEXUS_HOST/service/local/webhooks/configuration/reload" (or restart Nexus...)
+- If you want to test your WebHook listeners, you can send a fake event by doing an HTTP (GET or POST) request to "http://NEXUS_HOST/service/local/webhooks/fakeEvent?r=releases&g=com.example&a=webapp&v=2.1.0&c=&e=war"
+  of course you can change the r(epository), g(roupId), a(rtifactId), v(ersion), c(lassifier) and e(extension) parameters...
+- Finally, release some artifacts in Nexus and wait for your listeners be notified and do their work ;-)
+
+Change Log
+- Version 1.0 : Initial release. Tested with Nexus 1.9 & 1.9.2
+
+How to install
+- Download from https://github.com/downloads/vbehar/nexus-webhook-plugin/nexus-webhook-plugin-1.0-bundle.zip
+- Unzip the "nexus-webhook-plugin-VERSION-bundle.zip" file into the "plugin-repository" directory (located in "$NEXUS_HOME/sonatype-work/nexus/plugin-repository")
+  You should have a "nexus-rundeck-plugin-VERSION" directory with a "nexus-rundeck-plugin-VERSION.jar" file inside it (and a "dependencies" directory)
+- Download a sample of the configuration file from https://github.com/vbehar/nexus-webhook-plugin/blob/master/webhooks.properties
+- Copy the "webhooks.properties" file in the "conf" directory (located in "$NEXUS_HOME/sonatype-work/nexus/conf")
+- Edit the config file to suit your needs (read instructions inside the file...)
+- Then, you just need to restart Nexus.
+
+How to build
+- prerequisites : Apache Maven 2.2.1 or 3.x http://maven.apache.org/
+- run "mvn package"
+- use the "bundle" file in target/nexus-webhook-plugin-VERSION-bundle.zip
+
+Resources
+- Nexus : http://nexus.sonatype.org
+- WebHooks : http://www.webhooks.org/
+
+LICENSE : The Apache Software License, Version 2.0
+See the LICENSE file, or http://www.apache.org/licenses/LICENSE-2.0
+
