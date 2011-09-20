@@ -211,7 +211,7 @@
   </build>
 
   <dependencies>
-	<!-- Nexus API -->
+    <!-- Nexus API -->
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
       <artifactId>nexus-plugin-api</artifactId>
