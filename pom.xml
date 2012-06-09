@@ -117,6 +117,34 @@
           </execution>
         </executions>
       </plugin>
+      <!--
+        Fix Nexus plugins : some of app-lifecycle-maven-plugin 1.1 deps are broken
+        because they depend on com.google.code.atinject:atinject:jar:1.0.0-rev3
+        which is not on central
+        Fix : upgrade the bad plugins versions
+      -->
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>app-lifecycle-maven-plugin</artifactId>
+        <version>1.1</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.sonatype.plugin</groupId>
+            <artifactId>plugin-api</artifactId>
+            <version>1.1.0</version><!-- instead of 1.0.2 -->
+          </dependency>
+          <dependency>
+            <groupId>org.sonatype.plugin</groupId>
+            <artifactId>plugin-host-api</artifactId>
+            <version>1.1.0</version><!-- instead of 1.0.2 -->
+          </dependency>
+          <dependency>
+            <groupId>org.sonatype.plugin</groupId>
+            <artifactId>plugin-gleaner</artifactId>
+            <version>1.0.3</version><!-- instead of 1.0.2 -->
+          </dependency>
+        </dependencies>
+      </plugin>
     </plugins>
     <!-- Configure plugins versions -->
     <pluginManagement>
@@ -271,23 +299,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <!--
-    for com.google.code.atinject:atinject:jar:1.0.0-rev3
-    required by org.sonatype.plugins:app-lifecycle-maven-plugin:1.1 
-  -->
-  <pluginRepositories>
-    <pluginRepository>
-      <id>sonatype-third-party</id>
-      <name>Sonatype Third Party Repository</name>
-      <url>https://repository.sonatype.org/content/repositories/third-party</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
 
 </project>
