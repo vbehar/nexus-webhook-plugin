@@ -249,6 +249,12 @@
       <artifactId>nexus-proxy</artifactId>
       <version>${nexus.version}</version>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>com.google.code.atinject</groupId>
+          <artifactId>atinject</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
@@ -259,6 +265,10 @@
         <exclusion>
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.google.code.atinject</groupId>
+          <artifactId>atinject</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
