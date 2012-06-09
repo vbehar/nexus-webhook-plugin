@@ -10,8 +10,8 @@ Usage
 - Register your WebHook urls in the configuration file. See https://github.com/vbehar/nexus-webhook-plugin/blob/master/webhooks.properties for a sample with instructions.
 - If you want to reload your configuration, do an HTTP (GET or POST) request to "http://NEXUS_HOST/service/local/webhooks/configuration/reload" (or restart Nexus...)
 - If you want to test your WebHook listeners, you can send a fake event by doing an HTTP (GET or POST) request to "http://NEXUS_HOST/service/local/webhooks/fakeEvent?r=releases&g=com.example&a=webapp&v=2.1.0&c=&e=war"
-  of course you can change the r(epository), g(roupId), a(rtifactId), v(ersion), c(lassifier) and e(extension) parameters...
-- Finally, release some artifacts in Nexus and wait for your listeners be notified and do their work ;-)
+  of course you can change the r(epository), g(roupId), a(rtifactId), v(ersion), c(lassifier) and e(xtension) parameters...
+- Finally, release some artifacts in Nexus and wait for your listeners to be notified and do their work ;-)
 
 Change Log
 - Version 1.0 : Initial release. Tested with Nexus 1.9 & 1.9.2
